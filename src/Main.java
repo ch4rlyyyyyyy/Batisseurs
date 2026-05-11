@@ -1,16 +1,26 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+        Ressource bois = new Ressource("bois");
+        Ressource pierre = new Ressource("pierre");
+        Ressource architecture = new Ressource("architecture");
+        Ressource decoration = new Ressource("decoration");
+
+        Map<Ressource, Integer> production = new HashMap<>();
+        production.put(bois, 1);
+        production.put(pierre, 2);
+        production.put(architecture, 0);
+        production.put(decoration, 0);
+
+        List<Ressource> materiaux = Arrays.asList(bois, pierre);
+        List<Integer> quantites = Arrays.asList(2, 3);
+
+        Batiment maison = new Batiment("Maison", 3, 2, materiaux, quantites);
+        System.out.println(maison);
+        System.out.println("Pierre nécessaire: " + maison.quantiteByMateriau(pierre));
     }
 }
-
-
-
